@@ -92,7 +92,7 @@
 // Function return:
 // title, link, date, article html(text, images, videos)
 
-export async function getVKUserPosts(username, apiKey, count = 15) {
+export async function getVKPosts(username, apiKey, count = 15) {
   try {
     // Build the API URL
     const apiUrl = `https://api.vk.com/method/wall.get?domain=${username}&count=${count}&access_token=${apiKey}&v=5.131`;

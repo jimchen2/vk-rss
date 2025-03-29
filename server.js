@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const { getVKProfile } = require("./account.js");
 const { getVKGroupInfo } = require("./group.js");
-const { getVKUserPosts } = require("./get_posts.js");
+const { getVKPosts } = require("./get_posts.js");
 
 const DEFAULT_VK_API_KEY = process.env.VK_API_KEY || "";
 
@@ -20,7 +20,7 @@ app.get("/account/:username", async (req, res) => {
 
   try {
     // Fetch profile and posts concurrently
-    const [profile, posts] = await Promise.all([getVKProfile(username, apiKey), getVKUserPosts(username, apiKey, count)]);
+    const [profile, posts] = await Promise.all([getVKProfile(username, apiKey), getVKPosts(username, apiKey, count)]);
 
     // Generate RSS feed
     const rssFeed = generateRssFeed(profile, posts, username, req, apiKey);
@@ -39,6 +39,7 @@ app.get("/group/:groupId", async (req, res) => {
   const groupId = req.params.groupId;
   // Get API key from query parameter, fall back to default
   const apiKey = req.query.apiKey || DEFAULT_VK_API_KEY;
+  const count = req.query.count || 15;
 
   // Check if API key is provided (either default or from user)
   if (!apiKey) {
@@ -47,7 +48,7 @@ app.get("/group/:groupId", async (req, res) => {
 
   try {
     // Fetch group info and posts concurrently
-    const [groupInfo, posts] = await Promise.all([getVKGroupInfo(apiKey, groupId), getVKUserPosts(groupId, apiKey, count)]);
+    const [groupInfo, posts] = await Promise.all([getVKGroupInfo(groupId, apiKey), getVKPosts(groupId, apiKey, count)]);
 
     // Generate RSS feed
     const rssFeed = generateRssFeed(groupInfo, posts, groupId, req, apiKey, true);
