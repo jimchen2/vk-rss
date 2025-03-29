@@ -36,7 +36,7 @@
 // Function return:
 // name, image url, description
 
-async function getVKProfile(username, API_KEY) {
+export async function getVKProfile(username, API_KEY) {
   try {
     const apiUrl = `https://api.vk.com/method/users.get?user_ids=${username}&fields=photo_100,status,bdate,city&access_token=${API_KEY}&v=5.131`;
     const response = await fetch(apiUrl);

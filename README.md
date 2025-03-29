@@ -1,11 +1,7 @@
-I want to use the VK API
+Get a free API key: https://id.vk.com/about/business/go
 
-1. It doesn't expire very soon and I can fetch a specific channel everyday
-2. I don't actively participate in VK
-3. It fetches automatically
+Register an app, get the Access tokens > Service token
 
-Go to: https://id.vk.com/about/business/go
+Example: http://cdn.jimchen.me/vk.com/account/durov.rss
 
-Register an app, get the Access tokens > Service token 
-
-Test if this works: https://api.vk.com/method/wall.get?owner_id=1&count=10&access_token=?????????&v=5.199
+Get this: http://localhost:3000/account/durov?apiKey=ACCESS_TOKEN

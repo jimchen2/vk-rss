@@ -35,7 +35,7 @@
 // name, image url, description
 // put city into description
 
-async function getVKGroupInfo(apiKey, groupId) {
+export async function getVKGroupInfo(apiKey, groupId) {
   try {
     // Build the API URL
     const apiUrl = `https://api.vk.com/method/groups.getById?group_ids=${groupId}&fields=description,city,photo_100&access_token=${apiKey}&v=5.131`;
