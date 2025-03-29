@@ -1,4 +1,4 @@
-// This is personal accounts, not public pages
+// This is only for personal accounts
 // Example:
 // https://vk.com/tutberidze.eteri
 
@@ -31,7 +31,7 @@
 // }
 
 // Function params:
-// API_KEY
+// username, API_KEY
 
 // Function return:
 // name, image url, description
